@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
+
 
 @Service
 public class BookService
@@ -19,23 +19,25 @@ public class BookService
         this.bookRepo = bookRepo;
     }
 
-    public Book addBook(Book book){
-        book.setId(UUID.randomUUID().toString());
-        return bookRepo.save(book);
-    }
     public List<Book> findAllBooks() {
         return bookRepo.findAll();
+    }
+
+    public Book findBookByIsbn(String isbn){
+        return bookRepo.findBookByIsbn(isbn)
+                .orElseThrow(() -> new UserNotFoundException("User by ISBN " + isbn + " was not found"));
+    }
+    /**
+    public Book addBook(Book book) {
+        return bookRepo.save(book);
     }
 
     public Book updateBook(Book book) {
         return bookRepo.save(book);
     }
 
-    public Book findBookByISBN(Long ISBN){
-        return bookRepo.findBookByISBN(ISBN)
-                .orElseThrow(() -> new UserNotFoundException("User by ISBN " + ISBN + " was not found"));
+    public void deleteBook(String isbn){
+        bookRepo.deleteBookByIsbn(isbn);
     }
-    public void deleteBook(Long ISBN){
-        bookRepo.deleteBookByISBN(ISBN);
-    }
+     **/
 }

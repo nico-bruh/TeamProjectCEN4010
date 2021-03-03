@@ -23,15 +23,16 @@ public class BookResource {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{ISBN}")
-    public ResponseEntity<Book> getBookByISBN(@PathVariable("ISBN") Long ISBN) {
-        Book book = bookService.findBookByISBN(ISBN);
+    @GetMapping("/find/{isbn}")
+    public ResponseEntity<Book> getBookByISBN(@PathVariable("isbn") String isbn) {
+        Book book = bookService.findBookByIsbn(isbn);
         return new ResponseEntity<>(book, HttpStatus.OK);
     }
 
+    /**
     @PostMapping("/add")
     public ResponseEntity<Book>  addBook(@RequestBody Book book){
-        Book newBook = bookService.addBook(book);
+        Book newBook = bookService.updateBook(book);
         return new ResponseEntity<>(newBook, HttpStatus.CREATED);
     }
 
@@ -41,8 +42,9 @@ public class BookResource {
         return new ResponseEntity<>(updateBook, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{ISBN}")
-    public void deleteBook(@PathVariable("ISBN") Long ISBN){
-        bookService.deleteBook(ISBN);
+    @DeleteMapping("/delete/{isbn}")
+    public void deleteBook(@PathVariable("isbn") String isbn){
+        bookService.deleteBook(isbn);
     }
+    **/
 }

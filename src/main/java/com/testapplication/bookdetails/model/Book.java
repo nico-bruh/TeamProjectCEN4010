@@ -6,34 +6,34 @@ import java.io.Serializable;
 @Entity
 public class Book implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false, updatable = false)
-    private Long ISBN;
+    private String isbn;
     private String title;
     private String author;
     private double price;
+    private String genre;
     private String releaseDate;
     private String publishingInfo;
-    @Column(nullable = false, updatable = false)
-    private String id;
     private String description;
+    private String imageUrl;
 
     public Book() {
 
     }
 
-    public Book(String id, String title, String author, double price, String releaseDate, String publishingInfo, String description){
-        this.id = id;
+    public Book(String isbn, String title, String author, double price, String genre, String releaseDate, String publishingInfo, String description, String imageUrl){
+        this.isbn = isbn;
         this.title = title;
         this.author = author;
         this.price = price;
+        this.genre = genre;
         this.releaseDate = releaseDate;
         this.publishingInfo = publishingInfo;
         this.description = description;
+        this.imageUrl = imageUrl;
     }
 
-    public String getId() {
-        return id;
+    public String getIsbn() {
+        return isbn;
     }
 
     public String getTitle() {
@@ -48,65 +48,74 @@ public class Book implements Serializable {
         return price;
     }
 
+    public String getGenre() {
+        return genre;
+    }
+
     public String getReleaseDate() {
         return releaseDate;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Long getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(Long ISBN) {
-        this.ISBN = ISBN;
     }
 
     public String getPublishingInfo() {
         return publishingInfo;
     }
 
-    public void setPublishingInfo(String publishingInfo) {
-        this.publishingInfo = publishingInfo;
+    public String getDescription() {
+        return description;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setPublishingInfo(String publishingInfo) {
+        this.publishingInfo = publishingInfo;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
     public String toString() {
         return "book{" +
-                "ISBN=" + ISBN +
+                "ISBN=" + isbn +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", price='" + price + '\'' +
+                ", genre='" + genre + '\'' +
                 ", releaseDate='" + releaseDate + '\'' +
                 ", publishingInfo='" + publishingInfo + '\'' +
-                ", id='" + id + '\'' +
                 ", description='" + description + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 '}';
     }
 }
