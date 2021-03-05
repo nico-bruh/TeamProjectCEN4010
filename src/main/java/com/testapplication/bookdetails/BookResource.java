@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/home")
 public class BookResource {
     private final BookService bookService;
 
@@ -17,13 +17,13 @@ public class BookResource {
         this.bookService = bookService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/browse")
     public ResponseEntity<List<Book>> getAllBooks() {
         List<Book> books = bookService.findAllBooks();
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
-    @GetMapping("/find/{isbn}")
+    @GetMapping("/browse/{isbn}")
     public ResponseEntity<Book> getBookByISBN(@PathVariable("isbn") String isbn) {
         Book book = bookService.findBookByIsbn(isbn);
         return new ResponseEntity<>(book, HttpStatus.OK);
