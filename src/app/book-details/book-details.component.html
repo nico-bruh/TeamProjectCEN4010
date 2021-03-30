@@ -1,0 +1,38 @@
+<div class="page">
+    <div class="row">
+        <div class="col-sm-6 push-bit">
+            <a href="#" class="gallery-link"><img src="{{book.imageUrl}}" width = "300" height = "300" alt="" class="img-responsive push-bit" /></a>
+            <div class="row push-bit">
+            </div>
+        </div>
+        <div class="col-sm-6 push-bit">
+            <div class="clearfix">
+                <span class="h4">
+                    <strong class="text-success">{{book.title}}</strong><br />
+                    <br>
+                    <small>isbn: {{book.isbn}}
+                        <br> Genre: {{book.genre}}
+                        <br> Published on: {{book.releaseDate}} 
+                        <br> Publisher: {{book.publishingInfo}}
+                    </small>
+                </span>
+            </div>
+            <hr>
+            <div class = "paragraph">
+                <p>
+                    by {{book.author}}
+                </p>
+            </div>
+            <p>
+            <br> {{book.description}}
+            </p>
+            <hr>
+            <div class="pull-left">
+                <span class="h2"><strong>$ {{book.price}}</strong></span>
+            </div>
+
+            <button type="submit" class="btn btn-info"> Add to Cart </button>
+        </div>
+    </div>
+</div>
+

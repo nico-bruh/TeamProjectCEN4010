@@ -1,0 +1,116 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row">
+
+  
+
+  <!-- BEGIN SEARCH RESULT -->
+  <div class="col-md-12">
+    <div class="grid search">
+      <div class="grid-body">
+        <div class="row">
+          <!-- BEGIN FILTERS -->
+          <div class="col-md-3">
+            <h2 class="grid-title"><i class="fa fa-filter"></i> Filters</h2>
+            <hr>
+            
+            <!-- BEGIN FILTER BY CATEGORY -->
+            <h4>Browse By:</h4>
+            <div class="checkbox">
+              <label><input type="checkbox" class="icheck"> Genre</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" class="icheck"> Top Sellers</label>
+            </div>
+            <div class="rate">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" title="star5">5 stars</label>
+                <input type="radio" id="star4" name="rate" value="4" />
+                <label for="star4" title="star4">4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3" title="star3">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" title="star2">2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" title="star1">1 star</label>
+                <br/>
+                <br/>
+              </div>
+
+            
+            <!-- END FILTER BY CATEGORY -->
+            
+            <div class="padding"></div>
+            
+            
+            
+            <div class="padding"></div>
+            
+            
+          </div>
+          <!-- END FILTERS -->
+          <!-- BEGIN RESULT -->
+          <div class="col-md-9">
+            <h2><i class="fa fa-file-o"></i> Browse</h2>
+            <hr>
+            <!-- BEGIN SEARCH INPUT -->
+            <div class="input-group">
+              <input type="search" (ngModelChange)="searchBooks(key.value)" #key ="ngModel" ngModel
+              name="key" id = "searchBooks" class="form-control" placeholder="Search" required>
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+            <!-- END SEARCH INPUT -->
+            
+            
+            <div class="padding"></div>
+            
+            <div class="row">
+              <!-- BEGIN ORDER RESULT -->
+              
+              <!-- END ORDER RESULT -->
+              
+              
+            
+            <!-- BEGIN TABLE RESULT -->
+            
+            <table class ="table table-hover">
+              <thead>
+                <tr>
+                  <th>Cover</th>
+                  <th (click) ="setOrder('bookName')">Name&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('bookAuthor')">Author&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('bookRating')">Rating&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('bookDate')">Date&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('bookPrice')">Price&nbsp;<i class="fa fa-sort"></i></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let book of books | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}">
+
+                  <td class="image"><img src="{{book?.imageUrl}}" alt=""></td>
+                  <td class="product"><strong>{{book?.title}}</strong></td>
+                  <td class="product"><strong>{{book?.author}}</strong></td>
+                  <td class="rate text-right"><ngb-rating [max]="5" [(rate)]="book.book_rating" [readonly]="true"></ngb-rating></td>
+                  <td class="product"><strong>{{book?.releaseDate}}</strong></td>
+                  <td class="price text-right">${{book?.price}}</td>
+
+                </tr>
+              </tbody>
+
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+            </table>
+            
+            <!-- END TABLE RESULT -->
+            
+          </div>
+          <!-- END RESULT -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END SEARCH RESULT -->
+</div>
+</div>

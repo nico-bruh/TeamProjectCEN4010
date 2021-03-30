@@ -1,0 +1,28 @@
+@import 'https://stackpath.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'; 
+@import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
+body{
+    margin-top:20px;
+}
+
+.push-bit {
+    margin-bottom: 30px;
+}
+
+.gallery-link{
+    position: absolute;
+    right: 5%;
+}
+
+.paragraph{
+    font-weight: bold;
+    font-size: 15px;
+}
+.btn-info{
+    position: absolute;
+    right: 5%;
+}
+.bookdetails{
+    position:relative;
+    left: 5%;
+}
