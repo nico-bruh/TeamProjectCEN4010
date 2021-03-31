@@ -52,13 +52,13 @@ body{margin-top:20px;
     
     .search table tr td.rate {
         position: absolute;
-        left: 60%;
         color: #f39c12;
         line-height: 50px;
     }
     
     .search table tr td.price {
-        
+        position: relative;
+        right: 6.5%;
         font-size: 1.5em;
         line-height: 50px;
        
@@ -112,5 +112,24 @@ body{margin-top:20px;
         color: #FFC107;
         font-size: 15px;
     }
+
+    .ngx-pagination {
+        padding-left: 0px !important;
+      }
+      
+      .ngx-pagination .current,
+      .btn-info {
+        background: #17a2b8 !important;
+        border: transparent !important;
+        border-radius: 20px !important;
+      }
+      
+      .ngx-pagination .current:hover {
+        background: #17a2b8 !important;
+        border-radius: 20px !important; 
+        border: transparent !important;
+      }
+
+    
 
     

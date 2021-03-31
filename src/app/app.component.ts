@@ -14,7 +14,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class AppComponent implements OnInit
 {
   
-
+p:number = 1;
   public books: BookStore[];
   
   sortedCollection: any[];
@@ -61,9 +61,9 @@ public searchBooks(key: string): void
   }
 }
 
-order: string = 'info.name';
+  order: string = 'book.Bookname';
   reverse: boolean = false;
-  
+
 setOrder(value: string) {
   if (this.order === value) {
     this.reverse = !this.reverse;

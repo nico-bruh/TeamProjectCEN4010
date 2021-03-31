@@ -36,17 +36,10 @@
                 <br/>
                 <br/>
               </div>
-
-            
             <!-- END FILTER BY CATEGORY -->
             
             <div class="padding"></div>
-            
-            
-            
             <div class="padding"></div>
-            
-            
           </div>
           <!-- END FILTERS -->
           <!-- BEGIN RESULT -->
@@ -65,12 +58,7 @@
             
             
             <div class="padding"></div>
-            
             <div class="row">
-              <!-- BEGIN ORDER RESULT -->
-              
-              <!-- END ORDER RESULT -->
-              
               
             
             <!-- BEGIN TABLE RESULT -->
@@ -84,11 +72,10 @@
                   <th (click) ="setOrder('bookRating')">Rating&nbsp;<i class="fa fa-sort"></i></th>
                   <th (click) ="setOrder('bookDate')">Date&nbsp;<i class="fa fa-sort"></i></th>
                   <th (click) ="setOrder('bookPrice')">Price&nbsp;<i class="fa fa-sort"></i></th>
-                 
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let book of books | orderBy: order:reverse:'case-insensitive'">
+                <tr *ngFor="let book of books | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}">
                   
                   <td class="image"><img src="{{book?.bookCoverURL}}" alt=""></td>
                   <td class="product"><strong>{{book?.bookName}}</strong></td>
@@ -96,24 +83,17 @@
                   <td class="rate text-right"><ngb-rating [max]="5" [(rate)]="book.bookRating" [readonly]="true"></ngb-rating></td>
                   <td class="product"><strong>{{book?.bookDate}}</strong></td>
                   <td class="price text-right">${{book?.bookPrice}}</td>
+
                 </tr>
               </tbody>
+
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
             </table>
             
             <!-- END TABLE RESULT -->
             
-            <!-- BEGIN PAGINATION -->
-            <ul class="pagination">
-              <li class="enabled]]"><a href="#">«</a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">»</a></li>
-            </ul>
-            <!-- END PAGINATION -->
+            
           </div>
           <!-- END RESULT -->
         </div>
