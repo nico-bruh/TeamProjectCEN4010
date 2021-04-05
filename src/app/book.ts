@@ -9,5 +9,5 @@ export interface Book {
     publishingInfo: string;
     description: string;
     imageUrl: string;
-    book_rating: number;
+    bookRating: number;
 }

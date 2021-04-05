@@ -1,5 +1,6 @@
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
+
 body{margin-top:20px;
     background:#eee;
     }
@@ -51,13 +52,12 @@ body{margin-top:20px;
     
     .search table tr td.rate {
         position: absolute;
-        left: 60%;
         color: #f39c12;
         line-height: 50px;
     }
     
     .search table tr td.price {
-        
+        position: relative;
         font-size: 1.5em;
         line-height: 50px;
        
@@ -93,11 +93,11 @@ body{margin-top:20px;
         content: '★ ';
     }
     .rate > input:checked ~ label {
-        color: #ffc700;    
+        color: #ffc700;
     }
     .rate:not(:checked) > label:hover,
     .rate:not(:checked) > label:hover ~ label {
-        color: #deb217;  
+        color: #deb217;
     }
     .rate > input:checked + label:hover,
     .rate > input:checked + label:hover ~ label,
@@ -111,3 +111,22 @@ body{margin-top:20px;
         color: #FFC107;
         font-size: 15px;
     }
+
+    .ngx-pagination {
+        padding-left: 0px !important;
+      }
+      
+      .ngx-pagination .current,
+      .btn-info {
+        background: #17a2b8 !important;
+        border: transparent !important;
+        border-radius: 20px !important;
+      }
+      
+      .ngx-pagination .current:hover {
+        background: #17a2b8 !important;
+        border-radius: 20px !important; 
+        border: transparent !important;
+      }
+
+    

@@ -90,9 +90,9 @@
                 <tr *ngFor="let book of books | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}">
 
                   <td class="image"><img src="{{book?.imageUrl}}" alt=""></td>
-                  <td class="product"><strong>{{book?.title}}</strong></td>
+                  <td class="product"><strong><a routerLink="/browse/{{book.isbn}}" routerLinkActive="active"> {{book.title}} </a></strong></td>
                   <td class="product"><strong>{{book?.author}}</strong></td>
-                  <td class="rate text-right"><ngb-rating [max]="5" [(rate)]="book.book_rating" [readonly]="true"></ngb-rating></td>
+                  <td class="rate text-right"><ngb-rating [max]="5" [(rate)]="book.bookRating" [readonly]="true"></ngb-rating></td>
                   <td class="product"><strong>{{book?.releaseDate}}</strong></td>
                   <td class="price text-right">${{book?.price}}</td>
 
