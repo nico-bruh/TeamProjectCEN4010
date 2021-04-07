@@ -4,30 +4,20 @@
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
-    <form class="example-form">
+    <form class = "example-form" #registerForm="ngForm" (submit)="createAccount(registerForm.value)">
 
       <mat-card-content>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Username">
+          <input matInput placeholder="Username" type="text" name="username" id="username" ngModel />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Email">
+          <input matInput placeholder="Email" type="text" name="email" id="email" ngModel />
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Password">
+          <input matInput placeholder="Password" type="password" name="password" id="password" ngModel />
         </mat-form-field>
-        <!--
-        <mat-form-field class="example-full-width">
-          <mat-label>Choose a role...</mat-label>
-          <mat-select>
-            <mat-option [value]="roles" *ngFor="let roles of Roles">
-              {{roles}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        -->
       </mat-card-content>
 
       <button mat-stroked-button color="accent" class="btn-block">Register</button>
