@@ -34,4 +34,17 @@ export class BookDetailsComponent implements OnInit {
       ,(error: HttpErrorResponse) => {alert(error.message);}
       );
     }
+
+    showModal: boolean;
+    show()
+    {
+      this.showModal = true; // Show-Hide Modal Check  
+    }
+
+    //Bootstrap Modal Close event
+    hide()
+    {
+      this.showModal = false;
+    }
+
   }

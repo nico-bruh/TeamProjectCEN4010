@@ -1,38 +1,59 @@
 <div class="page">
-    <div class="row">
-        <div class="col-sm-6 push-bit">
-            <a href="#" class="gallery-link"><img src="{{book.imageUrl}}" width = "300" height = "300" alt="" class="img-responsive push-bit" /></a>
-            <div class="row push-bit">
-            </div>
-        </div>
-        <div class="col-sm-6 push-bit">
-            <div class="clearfix">
-                <span class="h4">
-                    <strong class="text-success">{{book.title}}</strong><br />
-                    <br>
-                    <small>isbn: {{book.isbn}}
-                        <br> Genre: {{book.genre}}
-                        <br> Published on: {{book.releaseDate}} 
-                        <br> Publisher: {{book.publishingInfo}}
-                    </small>
-                </span>
-            </div>
-            <hr>
-            <div class = "paragraph">
-                <p>
-                    by {{book.author}}
-                </p>
-            </div>
-            <p>
-            <br> {{book.description}}
-            </p>
-            <hr>
-            <div class="pull-left">
-                <span class="h2"><strong>$ {{book.price}}</strong></span>
-            </div>
 
-            <button type="submit" class="btn btn-info"> Add to Cart </button>
+    <div class="col-sm-6 push-bit">
+        <a (click) = "show()">
+            <a class="lightbox">
+                <img src="{{book.imageUrl}}"/>
+            </a>
+         </a>
+    </div>
+
+    <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+            </div>
+            <div class="modal-body">
+              <img src="{{book.imageUrl}}" id="imagepreview" style="width: 570px; height: 670px;" >
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" (click) = "hide()">Close</button>
+            </div>
+          </div>
         </div>
+    </div>
+
+    <div class="col-sm-6 push-bit">
+
+        <div class="clearfix">
+            <span class="h4">
+                <strong class="text-success">{{book.title}}</strong><br />
+                <br><small>  
+                    isbn: {{book.isbn}}
+                    <br> Genre: {{book.genre}}
+                    <br> Published on: {{book.releaseDate}} 
+                    <br> Publisher: {{book.publishingInfo}}
+                </small>
+            </span>
+            <hr>
+        </div>
+
+        <div class = "author">
+            <p>
+                by {{book.author}}
+            </p>
+        </div>
+
+        <p>
+        <br> {{book.description}}
+        </p>
+        <hr>
+
+        <div class="pull-left">
+            <span class="h2"><strong>$ {{book.price}}</strong></span>
+    </div>
+        <button type="submit" class="btn btn-info"> Add to Cart </button>
     </div>
 </div>
 
