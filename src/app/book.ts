@@ -10,4 +10,5 @@ export interface Book {
     description: string;
     imageUrl: string;
     bookRating: number;
+    authorDescription: String;
 }

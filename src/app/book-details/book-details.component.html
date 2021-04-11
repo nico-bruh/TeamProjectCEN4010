@@ -39,17 +39,24 @@
             <hr>
         </div>
 
-        <div class = "author">
-            <p>
-                by {{book.author}}
-            </p>
-        </div>
-
         <p>
         <br> {{book.description}}
         </p>
         <hr>
 
+        <div class = "author">
+            <p>
+                by 
+                <a routerLink="/browse" routerLinkActive="active">{{book.author}}</a>
+            </p>
+        </div>
+
+        <div class = "authorDesc">
+            <p>
+               {{book.authorDescription}} 
+            </p>
+        </div>
+        <hr>
         <div class="pull-left">
             <span class="h2"><strong>$ {{book.price}}</strong></span>
     </div>
