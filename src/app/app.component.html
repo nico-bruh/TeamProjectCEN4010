@@ -16,26 +16,56 @@
             
             <!-- BEGIN FILTER BY CATEGORY -->
             <h4>Browse By:</h4>
-            <div class="checkbox">
-              <label><input type="checkbox" class="icheck"> Genre</label>
+
+            
+
+            <div  class="checkbox">
+              <label><input type = "checkbox" (click) ="changeVal()" >Top Sellers</label>
+              <br>
+              <br>
+              <label><input type = "checkbox" (click) ="changeGenre('Gaming') " (click) ="changeGenreVal()" >Genre: Gaming</label>
+              <br>
+              <br>
+              <label><input type = "checkbox" (click) ="changeGenre('Action') " (click) ="changeGenreVal() ">Genre: Action</label>
+              <br>
+              <br>
+              <label><input type = "checkbox" (click) ="changeGenre('Classics') " (click) ="changeGenreVal() ">Genre: Classics</label>
+              <br>
+              <br>
+              <label><input type = "checkbox" (click) ="changeGenre('Fiction') " (click) ="changeGenreVal() ">Genre: Fiction</label>
+              <br>
+              <br>
+              <label><input type = "checkbox" (click) ="changeRateVal()">Rating</label>
+              
+              
+              
+              
+              
             </div>
-            <div class="checkbox">
-              <label><input type="checkbox" class="icheck"> Top Sellers</label>
-            </div>
+            
+
             <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
+                
+                <input type="radio" (click) ="changeRate(5)" id="star5" name="rate" value="5" />
                 <label for="star5" title="star5">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" />
+                <input type="radio" (click) ="changeRate(4)"id="star4" name="rate" value="4" />
                 <label for="star4" title="star4">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" />
+                <input type="radio" (click) ="changeRate(3)" id="star3" name="rate" value="3" />
                 <label for="star3" title="star3">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" />
+                <input type="radio" (click) ="changeRate(2)"id="star2" name="rate" value="2" />
                 <label for="star2" title="star2">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" />
+                <input type="radio" (click) ="changeRate(1)" id="star1" name="rate" value="1" />
                 <label for="star1" title="star1">1 star</label>
                 <br/>
                 <br/>
               </div>
+
+                <br>
+                
+
+                
+
+              
             <!-- END FILTER BY CATEGORY -->
             
             <div class="padding"></div>
@@ -54,6 +84,10 @@
                 <button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button>
               </span>
             </div>
+
+            
+
+            
             <!-- END SEARCH INPUT -->
             
             
@@ -62,20 +96,23 @@
               
             
             <!-- BEGIN TABLE RESULT -->
+
+
             
-            <table class ="table table-hover">
+            <table *ngIf="!value" class ="table table-hover">
               <thead>
                 <tr>
                   <th>Cover</th>
                   <th (click) ="setOrder('bookName')">Name&nbsp;<i class="fa fa-sort"></i></th>
                   <th (click) ="setOrder('bookAuthor')">Author&nbsp;<i class="fa fa-sort"></i></th>
-                  <th (click) ="setOrder('bookRating')">Rating&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('bookRating')">Rating   &nbsp;<i class="fa fa-sort"></i></th>
                   <th (click) ="setOrder('bookDate')">Date&nbsp;<i class="fa fa-sort"></i></th>
                   <th (click) ="setOrder('bookPrice')">Price&nbsp;<i class="fa fa-sort"></i></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr *ngFor="let book of books | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}">
+              <tbody *ngFor="let book of books | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}">
+                <tr *ngIf="book.bookRating == rate || book.bookGenre == genretype  || (!genrevalue && !ratevalue )">
+                  
                   
                   <td class="image"><img src="{{book?.bookCoverURL}}" alt=""></td>
                   <td class="product"><strong>{{book?.bookName}}</strong></td>
@@ -83,13 +120,51 @@
                   <td class="rate text-right"><ngb-rating [max]="5" [(rate)]="book.bookRating" [readonly]="true"></ngb-rating></td>
                   <td class="product"><strong>{{book?.bookDate}}</strong></td>
                   <td class="price text-right">${{book?.bookPrice}}</td>
+    
 
                 </tr>
               </tbody>
 
               <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
+              
+
             </table>
+          
+            
+            
+            <table *ngIf="value" class ="table table-hover">
+              <thead>
+                <tr>
+                  <th>Cover</th>
+                  <th (click) ="setOrder('topbookName')">Name&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('topbookAuthor')">Author&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('topbookRating')">Rating   &nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('topbookDate')">Date&nbsp;<i class="fa fa-sort"></i></th>
+                  <th (click) ="setOrder('topbookPrice')">Price&nbsp;<i class="fa fa-sort"></i></th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let topbook of topbooks | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}">
+                <tr *ngIf="topbook.topbookRating == rate || topbook.topbookGenre == genretype  || (!genrevalue && !ratevalue )">
+                  
+                  <td class="image"><img src="{{topbook?.topbookCoverURL}}" alt=""></td>
+                  <td class="product"><strong>{{topbook?.topbookName}}</strong></td>
+                  <td class="product"><strong>{{topbook?.topbookAuthor}}</strong></td>
+                  <td class="rate text-right"><ngb-rating [max]="5" [(rate)]="topbook.topbookRating" [readonly]="true"></ngb-rating></td>
+                  <td class="product"><strong>{{topbook?.topbookDate}}</strong></td>
+                  <td class="price text-right">${{topbook?.topbookPrice}}</td>
+
+                  
+
+                </tr>
+              </tbody>
+
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+              
+
+            </table>
+          
             
             <!-- END TABLE RESULT -->
             
