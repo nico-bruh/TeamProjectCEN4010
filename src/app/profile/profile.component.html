@@ -1,0 +1,303 @@
+<div class="example-form" fxLayout="row" fxLayoutAlign="center center">
+
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Profile</mat-card-title>
+      </mat-card-header>
+  
+      <form class="example-form" #loginForm="ngForm" (submit)="onSubmit()">
+  
+        <mat-card-content>
+  
+          <h3>Username: {{user.userName}}</h3>
+  
+          <mat-form-field class="example-full-width" title="Username">
+            <input matInput placeholder="Change username" name="username" id="username" type="text" [(ngModel)]="user.userName">
+          </mat-form-field>
+  
+          <h3>Email: {{user.email}}</h3>
+  
+          <mat-form-field class="example-full-width" title="Email">
+            <input matInput placeholder="Change email address" name="email" id="email" type="text" [(ngModel)]="user.email">
+          </mat-form-field>
+  
+  
+          <h3>Change Password</h3>
+          <mat-form-field class="example-full-width" title="Password">
+            <input matInput placeholder="New password" name="password" id="password" type="password" [(ngModel)]="user.password">
+          </mat-form-field>
+  
+          <div *ngIf="user.name">
+            <h3>Name: {{user.name}}</h3>
+  
+            <mat-form-field class="example-full-width" title="Name">
+              <input matInput placeholder="Change name" name="name" id="name" type="text" [(ngModel)]="user.name">
+            </mat-form-field>
+          </div>
+  
+          <div *ngIf="!user.name">
+            <h3>Name</h3>
+  
+            <mat-form-field class="example-full-width" title="Name">
+              <input matInput placeholder="Add name" name="name" id="name" type="text" [(ngModel)]="user.name">
+            </mat-form-field>
+          </div>
+  
+  
+          <div *ngIf="user.homeAddress">
+            <h3>Home Address: <br /> {{user.homeAddress}}</h3>
+  
+            <mat-form-field class="example-full-width" title="Home Address">
+              <textarea matInput placeholder="Change home address" name="homeAddress" id="homeAddress" type="text" rows="2" [(ngModel)]="user.homeAddress"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div *ngIf="!user.homeAddress">
+            <h3>Home Address</h3>
+  
+            <mat-form-field class="example-full-width" title="Home Address">
+              <textarea matInput placeholder="Add home address" name="homeAddress" id="homeAddress" type="text" rows="2" [(ngModel)]="user.homeAddress"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <h3>Shipping Address(es)</h3>
+  
+          <div id="ship1" *ngIf="user.shippingAddress1">
+            <h4>Shipping Address 1: <br /> {{user.shippingAddress1}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Change shipping address" name="shipAdd1" id="shipAdd1" type="text" rows="2" [(ngModel)]="user.shippingAddress1"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="ship2" *ngIf="user.shippingAddress2">
+            <h4>Shipping Address 2: <br /> {{user.shippingAddress2}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Change shipping address" name="shipAdd2" id="shipAdd2" type="text" rows="2"[(ngModel)]="user.shippingAddress2"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="ship3" *ngIf="user.shippingAddress3">
+            <h4>Shipping Address 3: <br /> {{user.shippingAddress3}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Change shipping address" name="shipAdd3" id="shipAdd3" type="text" rows="2" [(ngModel)]="user.shippingAddress3"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="ship4" *ngIf="user.shippingAddress4">
+            <h4>Shipping Address 4: <br /> {{user.shippingAddress4}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Change shipping address" name="shipAdd4" id="shipAdd4" type="text" rows="2" [(ngModel)]="user.shippingAddress4"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addShip1" *ngIf="!user.shippingAddress1">
+            <h4>Add Shipping Address</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Add shipping address" name="addShipAdd1" id="addShipAdd1" type="text" rows="2" [(ngModel)]="user.shippingAddress1"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addShip2" *ngIf="user.shippingAddress1 && !user.shippingAddress2">
+            <h4>Add Shipping Address</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Add shipping address" name="addShipAdd2" id="addShipAdd2" type="text" rows="2" [(ngModel)]="user.shippingAddress2"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addShip3" *ngIf="user.shippingAddress2 && !user.shippingAddress3">
+            <h4>Add Shipping Address</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Add shipping address" name="addShipAdd3" id="addShipAdd3" type="text" rows="2" [(ngModel)]="user.shippingAddress3"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addShip4" *ngIf="user.shippingAddress3 && !user.shippingAddress4">
+            <h4>Add Shipping Address</h4>
+  
+            <mat-form-field class="example-full-width" title="Shipping Address">
+              <textarea matInput placeholder="Add shipping address" name="addShipAdd4" id="addShipAdd4" type="text" rows="2" [(ngModel)]="user.shippingAddress4"></textarea>
+            </mat-form-field>
+  
+          </div>
+  
+          <h3>Credit Card Information</h3>
+  
+          <div id="card1" *ngIf="user.cvc1">
+  
+            <h4>Credit Card 1</h4>
+            <h4>Card number: {{user.cardNumber1}}</h4>
+            <h4>Expiration date: {{user.expirationDate1}}</h4>
+            <h4>Verification code: {{user.cvc1}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 1">
+              <input matInput placeholder="Change card number" name="cardNum1" id="cardNum1" type="text" [(ngModel)]="user.cardNumber1">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 1">
+              <input matInput placeholder="Change expiration date" name="expDate1" id="expDate1" type="text" [(ngModel)]="user.expirationDate1">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 1">
+              <input matInput placeholder="Change verification code" name="cvc1" id="cvc1" type="text" [(ngModel)]="user.cvc1">
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="card2" *ngIf="user.cvc2">
+  
+            <h4>Credit Card 2</h4>
+            <h4>Card number: {{user.cardNumber2}}</h4>
+            <h4>Expiration date: {{user.expirationDate2}}</h4>
+            <h4>Verification code: {{user.cvc2}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 2">
+              <input matInput placeholder="Change card number" name="cardNum2" id="cardNum2" type="text" [(ngModel)]="user.cardNumber2">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 2">
+              <input matInput placeholder="Change expiration date" name="expDate2" id="expDate2" type="text" [(ngModel)]="user.expirationDate2">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 2">
+              <input matInput placeholder="Change verification code" name="cvc2" id="cvc2" type="text" [(ngModel)]="user.cvc2">
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="card1" *ngIf="user.cvc3">
+  
+            <h4>Credit Card 3</h4>
+            <h4>Card number: {{user.cardNumber3}}</h4>
+            <h4>Expiration date: {{user.expirationDate3}}</h4>
+            <h4>Verification code: {{user.cvc3}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 3">
+              <input matInput placeholder="Change card number" name="cardNum3" id="cardNum3" type="text" [(ngModel)]="user.cardNumber3">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 3">
+              <input matInput placeholder="Change expiration date" name="expDate3" id="expDate3" type="text" [(ngModel)]="user.expirationDate3">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 3">
+              <input matInput placeholder="Change verification code" name="cvc3" id="cvc3" type="text" [(ngModel)]="user.cvc3">
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="card4" *ngIf="user.cvc4">
+  
+            <h4>Credit Card 4</h4>
+            <h4>Card number: {{user.cardNumber4}}</h4>
+            <h4>Expiration date: {{user.expirationDate4}}</h4>
+            <h4>Verification code: {{user.cvc4}}</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 4">
+              <input matInput placeholder="Change card number" name="cardNum4" id="cardNum4" type="text" [(ngModel)]="user.cardNumber4">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 4">
+              <input matInput placeholder="Change expiration date" name="expDate4" id="expDate4" type="text" [(ngModel)]="user.expirationDate4">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 4">
+              <input matInput placeholder="Change verification code" name="cvc4" id="cvc4" type="text" [(ngModel)]="user.cvc4">
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addCard1" *ngIf="!user.cvc1">
+  
+            <h4>Add Credit Card</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 1">
+              <input matInput placeholder="Add card number" name="addCardNum1" id="addCardNum1" type="text" [(ngModel)]="user.cardNumber1">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 1">
+              <input matInput placeholder="Add expiration date" name="addExpDate1" id="addExpDate1" type="text" [(ngModel)]="user.expirationDate1">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 1">
+              <input matInput placeholder="Add verification code" name="addCvc1" id="addCvc1" type="text" [(ngModel)]="user.cvc1">
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addCard2" *ngIf="user.cvc1 && !user.cvc2">
+  
+            <h4>Add Credit Card</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 2">
+              <input matInput placeholder="Add card number" name="addCardNum2" id="addCardNum2" type="text" [(ngModel)]="user.cardNumber2">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 2">
+              <input matInput placeholder="Add expiration date" name="addExpDate2" id="addExpDate2" type="text" [(ngModel)]="user.expirationDate2">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 2">
+              <input matInput placeholder="Add verification code" name="addCvc2" id="addCvc2" type="text" [(ngModel)]="user.cvc2">
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addCard3" *ngIf="user.cvc2 && !user.cvc3">
+  
+            <h4>Add Credit Card</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 3">
+              <input matInput placeholder="Add card number" name="addCardNum3" id="addCardNum3" type="text" [(ngModel)]="user.cardNumber3">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 3">
+              <input matInput placeholder="Add expiration date" name="addExpDate3" id="addExpDate3" type="text" [(ngModel)]="user.expirationDate3">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 3">
+              <input matInput placeholder="Add verification code" name="addCvc3" id="addCvc3" type="text" [(ngModel)]="user.cvc3">
+            </mat-form-field>
+  
+          </div>
+  
+          <div id="addCard4" *ngIf="user.cvc3 && !user.cvc4">
+  
+            <h4>Add Credit Card</h4>
+  
+            <mat-form-field class="example-full-width" title="Card Number 4">
+              <input matInput placeholder="Add card number" name="addCardNum4" id="addCardNum4" type="text" [(ngModel)]="user.cardNumber4">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="Expiration Date 4">
+              <input matInput placeholder="Add expiration date" name="addExpDate4" id="addExpDate4" type="text" [(ngModel)]="user.expirationDate4">
+            </mat-form-field>
+  
+            <mat-form-field class="example-full-width" title="CVC 4">
+              <input matInput placeholder="Add verification code" name="addCvc4" id="addCvc4" type="text" [(ngModel)]="user.cvc4">
+            </mat-form-field>
+  
+          </div>
+  
+        </mat-card-content>
+  
+        <button mat-stroked-button color="accent" class="btn-block">Save</button>
+      </form>
+    </mat-card>
+  
+  </div>

@@ -1,9 +1,13 @@
-<h1></h1>
-<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
-<nav>
-  <ul>
-    <li><a routerLink="/browse" routerLinkActive="active">Book Browse</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
+<header> 
+  <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href = "#">Register</a></li>
+        <li><a routerLink="/browse" routerLinkActive="active">Browse</a></li>
+        <li><a routerLink="/shoppingcart" routerLinkActive="active">Shopping Cart</a></li>
+        <li><a href = "#">Wish List</a></li>
+        <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+        <li><a routerLink="/login" routerLinkActive="active">Login</a></li>
+      </ul>
+  </nav>
+</header>
 <router-outlet></router-outlet>

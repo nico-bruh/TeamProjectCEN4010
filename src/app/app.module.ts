@@ -5,14 +5,22 @@ import { AppComponent } from './app.component';
 import { BookService } from './book.service';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BookBrowsingComponent } from './book-browsing/book-browsing.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
-  declarations: [ AppComponent, BookDetailsComponent, BookBrowsingComponent ],
+  declarations: [ AppComponent, BookDetailsComponent, BookBrowsingComponent, LoginComponent,
+    RegisterComponent,
+    ProfileComponent ],
   
   imports:[
     BrowserModule,
@@ -22,7 +30,10 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     ReactiveFormsModule,
     FormsModule,
     NgxPaginationModule,
-    OrderModule
+    OrderModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    FlexLayoutModule,
   ],
   providers: [BookService],
   bootstrap: [AppComponent],
