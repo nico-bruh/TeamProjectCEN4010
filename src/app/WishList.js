@@ -1,22 +1,26 @@
-var titles = ["Hunger games","The Walking Dead", "Java"];
-var descriptions = ["An adventure", "A scary mystery", "Programming"];
-var prices = [9.99,7.99,12.49];
-var links = ["https://upload.wikimedia.org/wikipedia/en/thumb/3/39/The_Hunger_Games_cover.jpg/220px-The_Hunger_Games_cover.jpg", "https://images-na.ssl-images-amazon.com/images/I/51oyi5ajgtL._SX334_BO1,204,203,200_.jpg", "https://m.media-amazon.com/images/I/514axA2lwpL.jpg"]
+const color = ["rgb(116, 185, 255)", "rgb(162, 155, 254)",  "rgb(178, 190, 195)","rgb(253, 203, 110)" , "rgb(250, 177, 160)", "rgb(0, 206, 201)"];
+var titles = ["Hunger games","The Walking Dead", "Java", " Will Teach You to Be Rich, Second Edition: No Guilt. No Excuses. No BS. Just a 6-Week Program That Works"];
+var descriptions = ["An adventure", "A scary mystery", "Programming", "The groundbreaking NEW YORK TIMES and WALL STREET JOURNAL BESTSELLER that taught a generation how to earn more, save more, and live a rich life—now in a revised 2nd edition"];
+var prices = [9.99,7.99,12.49, 7.41];
+var links = ["https://upload.wikimedia.org/wikipedia/en/thumb/3/39/The_Hunger_Games_cover.jpg/220px-The_Hunger_Games_cover.jpg", "https://images-na.ssl-images-amazon.com/images/I/51oyi5ajgtL._SX334_BO1,204,203,200_.jpg", "https://m.media-amazon.com/images/I/514axA2lwpL.jpg", "https://images-na.ssl-images-amazon.com/images/I/51v9NVwWHHL._SX330_BO1,204,203,200_.jpg"];
 function load()
 {
     var a = document.getElementById("field");
+    document.getElementById("title").innerHTML = "<strong style='font: 60px Copperplate, fantasy;'>"+"Sample 1"+"</strong>";
     a.innerHTML = "";
    for(var i = 0; i < titles.length; i++)
    {
-       const title = "<legend id='Title"+numToLet(i)+"' style='font-size:30'>"+titles[i]+"</legend>";
-       const button1 = "<p></p><button id='abut"+numToLet(i)+"' onclick=addItem(f"+numToLet(i)+")>Add to Cart!</button>";
-       const button2 = "<button id='bbut"+numToLet(i)+"' onclick=deleteItem(f"+numToLet(i)+")>Remove to Cart!</button>";
-       const img = "<IMG src = '"+links[i]+"'>";
-       const descrip = "<tl>"+descriptions[i]+"</tl>";
-       const price = "<p></p><tl align='RIGHT' id='pricea'>$"+prices[i]+"</tl>";
+       //const title = "<legend id='Title"+numToLet(i)+"' style='font-size:30'>"+titles[i]+"</legend>";
+       const emptyLine = "<p></p>";
+       const title = "<hl id='Title"+numToLet(i)+"' style='font-size:30; color:rgb(255,255,255);'>"+titles[i]+"</hl>";//DO NOT CONFUSE WITH wishList title. This is for book titles
+       const button1 = emptyLine+"<button id='abut"+numToLet(i)+"' onclick=addItem(f"+numToLet(i)+") style='background-color: rgb(255, 234, 167)'>Add to Cart!</button>";
+       const button2 = "<button id='bbut"+numToLet(i)+"' onclick=deleteItem(f"+numToLet(i)+") style='background-color: rgb(250, 177, 160)'>Remove to Cart!</button>";
+       const img = emptyLine+"<IMG src = '"+links[i]+"'>";
+       const descrip = emptyLine+"<tl style='color:rgb(255,255,255);'>"+descriptions[i]+"</tl>";
+       const price = emptyLine+"<strong align='RIGHT' id='price"+numToLet(i)+"' style='color:rgb(214, 48, 49);'>$"+prices[i]+"</strong>";
        //<p></p> = \n
-        a.innerHTML = a.innerHTML+ "<fieldset id='f"+numToLet(i)+"'>"+title+img+descrip+price+button1+button2+"</fieldset>";
-    }
+        a.innerHTML = a.innerHTML+ "<fieldset id='f"+numToLet(i)+"' style='background-color:"+color[i%color.length]+"'>"+title+img+descrip+price+button1+button2+"</fieldset>";
+    }//0%3=
     if(a.innerHTML === "")
     {
         a.innerHTML = "<strong>There are no items</strong>";
@@ -76,6 +80,7 @@ function total()
     {
         res += prices[i];
     }
+    res = (Math.round(res * 100) / 100).toFixed(2);//Format the number
     return res;
 }
 function numToLet(input)//No index use. Letters are a substitute for indexes.
@@ -120,8 +125,8 @@ function lastElements()//Last of the HTML
 {
 const priceElement = "<tl id='priceElement'>Total: $"+total()+"</tl>";
 const first = "<dl></dl>"
-const second = "<button type = 'button' onclick='addAll()'>Add all to Cart</button>"
-const third = "<button type = 'button' onclick = 'removeAll()'>Remove all to Cart</button>"
+const second = "<button type = 'button' onclick='addAll()' style='background-color:rgb(85, 239, 196)'>Add all to Cart</button>"
+const third = "<button type = 'button' onclick = 'removeAll()' style='background-color:rgb(116, 185, 255)'>Remove all to Cart</button>"
 return first+priceElement+first+second+first+third;
 }
 function addAll()
