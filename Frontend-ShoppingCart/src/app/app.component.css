@@ -1,0 +1,25 @@
+header {
+  margin: 0;
+  top : 0;
+  min-height: 10vh;
+}
+
+.nav-bar{
+  background: lightblue;
+  width: 100%;
+  position: fixed;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.links a {
+    text-decoration: none;
+}
+
+.header {
+  position : fixed;
+}
