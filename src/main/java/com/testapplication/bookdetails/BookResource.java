@@ -1,11 +1,11 @@
 package com.testapplication.bookdetails;
 
-import com.testapplication.bookdetails.exception.UserNotFoundException;
 import com.testapplication.bookdetails.model.Book;
 import com.testapplication.bookdetails.model.Card;
+import com.testapplication.bookdetails.model.ShoppingCart;
 import com.testapplication.bookdetails.model.User;
-import com.testapplication.bookdetails.repo.UserRepository;
 import com.testapplication.bookdetails.service.BookService;
+import com.testapplication.bookdetails.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +18,12 @@ import java.util.List;
 public class BookResource {
     @Autowired
     private final BookService bookService;
+    private final ShoppingCartService service;
 
-    public BookResource(BookService bookService) {
+
+    public BookResource(BookService bookService, ShoppingCartService service) {
         this.bookService = bookService;
+        this.service = service;
     }
 
     @GetMapping("/browse")
@@ -33,6 +36,36 @@ public class BookResource {
     public ResponseEntity<Book> getBookByISBN(@PathVariable("isbn") String isbn) {
         Book book = bookService.findBookByIsbn(isbn);
         return new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @GetMapping("/allItems")
+    public ResponseEntity<List<ShoppingCart>> getShoppingCartItems() {
+        List<ShoppingCart> list = service.getCartItems();
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
+
+    @PostMapping("/addItem")
+    public ResponseEntity<ShoppingCart> addToCart(@RequestBody ShoppingCart book) {
+        ShoppingCart newBook = service.addToCart(book);
+        return new ResponseEntity<>(newBook, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/updateItem")
+    public ResponseEntity<ShoppingCart> updateQuantity(@RequestBody ShoppingCart book) {
+        ShoppingCart updateBookQuantity = service.updateQuantity(book);
+        return new ResponseEntity<>(updateBookQuantity, HttpStatus.OK);
+    }
+
+    @PutMapping("/saveItem")
+    public ResponseEntity<ShoppingCart> updateSaveForLater(@RequestBody ShoppingCart book) {
+        ShoppingCart updateBookQuantity = service.saveBookForLater(book);
+        return new ResponseEntity<>(updateBookQuantity, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteItem/{id}")
+    public ResponseEntity<?> removeFromCart(@PathVariable("id") Integer id) {
+        service.deleteShoppingCart(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     /**
