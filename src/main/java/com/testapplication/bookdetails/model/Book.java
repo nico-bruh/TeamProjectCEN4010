@@ -9,27 +9,32 @@ public class Book implements Serializable {
     private String isbn;
     private String title;
     private String author;
+    private String authorDescription;
     private double price;
     private String genre;
     private String releaseDate;
     private String publishingInfo;
     private String description;
     private String imageUrl;
+    private double bookRating;
+
 
     public Book() {
 
     }
 
-    public Book(String isbn, String title, String author, double price, String genre, String releaseDate, String publishingInfo, String description, String imageUrl){
+    public Book(String isbn, String title, String author, String authorDescription, double price, String genre, String releaseDate, String publishingInfo, String description, String imageUrl, double bookRating){
         this.isbn = isbn;
         this.title = title;
         this.author = author;
+        this.authorDescription = authorDescription;
         this.price = price;
         this.genre = genre;
         this.releaseDate = releaseDate;
         this.publishingInfo = publishingInfo;
         this.description = description;
         this.imageUrl = imageUrl;
+        this.bookRating = bookRating;
     }
 
     public String getIsbn() {
@@ -44,6 +49,9 @@ public class Book implements Serializable {
         return author;
     }
 
+    public String getAuthorDescription(){
+        return authorDescription;
+    }
     public double getPrice() {
         return price;
     }
@@ -68,6 +76,8 @@ public class Book implements Serializable {
         return imageUrl;
     }
 
+    public double getBookRating() { return bookRating; }
+
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
@@ -78,6 +88,10 @@ public class Book implements Serializable {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public void setAuthorDescription(String authorDescription){
+        this.authorDescription = authorDescription;
     }
 
     public void setPrice(double price) {
@@ -104,6 +118,10 @@ public class Book implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    public void setBookRating(double bookRating) {
+        this.bookRating = bookRating;
+    }
+
     @Override
     public String toString() {
         return "book{\n" +
@@ -116,6 +134,7 @@ public class Book implements Serializable {
                 "publishingInfo=" + publishingInfo + '\n' +
                 "description=" + description + '\n' +
                 "imageUrl=" + imageUrl + '\n' +
+                "bookRating=" + bookRating + '\n' +
                 "}\n";
     }
 }
