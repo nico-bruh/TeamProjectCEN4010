@@ -1,0 +1,14 @@
+<div class = page>
+<header>List of all books by {{author}} in our store</header>
+
+<br> 
+
+<tbody *ngFor="let book of books"> 
+    <tr *ngIf="book.author == author ">
+
+      <strong><a routerLink="/browse/{{book.isbn}}" routerLinkActive="active"> {{book.title}} </a></strong>
+
+    </tr>
+  </tbody>
+</div>
+  <router-outlet></router-outlet>

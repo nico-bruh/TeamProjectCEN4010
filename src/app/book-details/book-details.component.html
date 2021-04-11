@@ -45,12 +45,11 @@
         <hr>
 
         <div class = "author">
-            <p>
                 by 
-                <a routerLink="/browse" routerLinkActive="active">{{book.author}}</a>
-            </p>
+                <a routerLink="/author/{{book.author}}" routerLinkActive="active"> {{book.author}}</a>
         </div>
-
+        <td class="rate text-right"><ngb-rating [max]="5" [(rate)]="book.bookRating" [readonly]="true"></ngb-rating></td>
+        <br>
         <div class = "authorDesc">
             <p>
                {{book.authorDescription}} 
@@ -62,5 +61,66 @@
     </div>
         <button type="submit" class="btn btn-info"> Add to Cart </button>
     </div>
+
+</div>
+<div class="comment-thread">
+    <!-- Comment 1 start -->
+    <details open class="comment" id="comment-1">
+        <summary>
+            <div class="comment-heading">
+                <div class="comment-voting">
+                    <button type="button">
+                        <span aria-hidden="true">&#9650;</span>
+                        <span class="sr-only">Vote up</span>
+                    </button>
+                    <button type="button">
+                        <span aria-hidden="true">&#9660;</span>
+                        <span class="sr-only">Vote down</span>
+                    </button>
+                </div>
+                <div class="comment-info">
+                    <a href="#" class="comment-author">someguy14</a>
+                    <p class="m-0">
+                     4 days ago
+                    </p>
+                </div>
+            </div>
+        </summary>
+        <div class="comment-body">
+            <p>
+                This is really great! I fully agree with what you wrote, and this is sure to help me out in the future. Thank you for posting this.
+            </p>
+        </div>
+
+        <details open class="comment" id="comment-2">
+            <summary>
+                <div class="comment-heading">
+                    <div class="comment-voting">
+                        <button type="button">
+                            <span aria-hidden="true">&#9650;</span>
+                            <span class="sr-only">Vote up</span>
+                        </button>
+                        <button type="button">
+                            <span aria-hidden="true">&#9660;</span>
+                            <span class="sr-only">Vote down</span>
+                        </button>
+                    </div>
+                    <div class="comment-info">
+                        <a href="#" class="comment-author">randomperson81</a>
+                        <p class="m-0">
+                             3 days ago
+                        </p>
+                    </div>
+                </div>
+            </summary>
+
+            <div class="comment-body">
+                <p>
+                    Took the words right out of my mouth!
+                </p>
+            </div>
+        </details>
+    </details>
+    <!-- Comment 1 end -->
 </div>
 

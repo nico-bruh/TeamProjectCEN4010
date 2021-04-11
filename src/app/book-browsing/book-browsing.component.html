@@ -17,25 +17,28 @@
             <!-- BEGIN FILTER BY CATEGORY -->
             <h4>Browse By:</h4>
             <div class="checkbox">
-              <label><input type="checkbox" class="icheck"> Genre</label>
+              <label><input type = "checkbox" (click) ="changeRateVal()">Rating</label>
             </div>
             <div class="checkbox">
               <label><input type="checkbox" class="icheck"> Top Sellers</label>
             </div>
             <div class="rate">
-                <input type="radio" id="star5" name="rate" value="5" />
-                <label for="star5" title="star5">5 stars</label>
-                <input type="radio" id="star4" name="rate" value="4" />
-                <label for="star4" title="star4">4 stars</label>
-                <input type="radio" id="star3" name="rate" value="3" />
-                <label for="star3" title="star3">3 stars</label>
-                <input type="radio" id="star2" name="rate" value="2" />
-                <label for="star2" title="star2">2 stars</label>
-                <input type="radio" id="star1" name="rate" value="1" />
-                <label for="star1" title="star1">1 star</label>
-                <br/>
-                <br/>
-              </div>
+
+              <input type="radio" (click) ="changeRate(5)" id="star5" name="rate" value="5" />
+              <label for="star5" title="star5">5 stars</label>
+              <input type="radio" (click) ="changeRate(4)"id="star4" name="rate" value="4" />
+              <label for="star4" title="star4">4 stars</label>
+              <input type="radio" (click) ="changeRate(3)" id="star3" name="rate" value="3" />
+              <label for="star3" title="star3">3 stars</label>
+              <input type="radio" (click) ="changeRate(2)"id="star2" name="rate" value="2" />
+              <label for="star2" title="star2">2 stars</label>
+              <input type="radio" (click) ="changeRate(1)" id="star1" name="rate" value="1" />
+              <label for="star1" title="star1">1 star</label>
+              <br/>
+              <br/>
+            </div>
+
+              <br>
 
             
             <!-- END FILTER BY CATEGORY -->
@@ -86,8 +89,8 @@
                   <th (click) ="setOrder('price')">Price&nbsp;<i class="fa fa-sort"></i></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr *ngFor="let book of books | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}">
+              <tbody *ngFor="let book of books | orderBy: order:reverse:'case-insensitive' | paginate: {itemsPerPage: 10, currentPage: p}"> 
+                <tr *ngIf="book.bookRating == rate || !ratevalue ">
 
                   <td class="image"><img src="{{book?.imageUrl}}" alt=""></td>
                   <td class="product"><strong><a routerLink="/browse/{{book.isbn}}" routerLinkActive="active"> {{book.title}} </a></strong></td>

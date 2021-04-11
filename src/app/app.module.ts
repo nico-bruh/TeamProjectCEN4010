@@ -17,10 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe'
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { AuthorLinkComponent } from './author-link/author-link.component';
 @NgModule({
   declarations: [ AppComponent, BookDetailsComponent, BookBrowsingComponent, LoginComponent,
     RegisterComponent,
-    ProfileComponent ],
+    ProfileComponent,
+    AuthorLinkComponent ],
   
   imports:[
     BrowserModule,

@@ -24,7 +24,7 @@ export class BookDetailsComponent implements OnInit {
   
 
     ngOnDestroy(){
-      this.routeSub.unsubscribe();
+      
     }
   
   

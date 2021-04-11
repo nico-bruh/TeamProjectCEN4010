@@ -15,6 +15,9 @@ export class BookBrowsingComponent implements OnInit
 {
   p:number = 1;
   public books: Book[];
+  public value: boolean;
+  public ratevalue: boolean;
+  public rate: number;
   
   sortedCollection: any[];
   constructor(private BookService: BookService, private orderPipe: OrderPipe)
@@ -72,7 +75,21 @@ setOrder(value: string) {
 
   this.order = value;
 }
+public changeVal()
+    {
+        this.value = !this.value;
+    }
 
+public changeRate(num)
+  {
+    this.rate = num;
+  }
+
+  public changeRateVal()
+    {
+
+        this.ratevalue = !this.ratevalue;
+    }
 
 
   
