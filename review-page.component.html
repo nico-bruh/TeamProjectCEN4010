@@ -33,9 +33,6 @@
                                     <p>
                                         by {{book.author}}
                                     </p>
-                                    <p>
-                                      Reviews: {{book?.review}}
-                                    </p>
                                 </div> 
                                 <hr>
                             </div>
@@ -44,12 +41,12 @@
 
 
 
-<span class="heading">User Rating</span>
+<!-- <span class="heading">User Rating</span>
 <span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
-<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span>
 
 <p>4.1 average based on 254 reviews.</p>
 
@@ -109,30 +106,30 @@
   <div class="side right">
     <div>20</div>
   </div>
-</div>
-                <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-                    <h5 class="mb-1">All Ratings and Reviews</h5>
+</div> -->
+                <div *ngFor ="let book of book" class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+                    <h5 class="mb-1">Reviews for {{book?.title}}</h5>
                     <div class="reviews-members pt-4 pb-4">
                         <div class="media">
                             <div class="media-body">
                                 <div class="reviews-members-header">
-                                    <h6 class="mb-1"><a class="text-black">Singh Osahan</a></h6>
+                                    <h6 class="mb-1"><a class="text-black">{{book?.review}}</a></h6>
                                     <span class="star-rating float-right">
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                          <a href="#"><i class="icofont-ui-rating"></i></a>
+                                          <!-- <a><i class="icofont-ui-rating active"></i></a>
+                                          <a><i class="icofont-ui-rating active"></i></a>
+                                          <a><i class="icofont-ui-rating active"></i></a>
+                                          <a><i class="icofont-ui-rating active"></i></a>
+                                          <a><i class="icofont-ui-rating active"></i></a> -->
                                           </span>
                                 </div>
                                 <div class="reviews-members-body">
-                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                     <hr>
-                    <div class="reviews-members pt-4 pb-4">
+                    <!-- <div class="reviews-members pt-4 pb-4">
                         <div class="media">
                             <div class="media-body">
                                 <div class="reviews-members-header">
@@ -150,25 +147,30 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <hr>
-                    <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">See All Reviews</a>
+                    <!-- <a class="text-center w-100 d-block mt-4 font-weight-bold" href="#">See All Reviews</a> -->
                 </div>
                 <div class="bg-white rounded shadow-sm p-4 mb-5 rating-review-select-page">
                     <h1>Make your Review</h1>
-                    <form action="#" th:action="@{/add}" th:object="${/add}" method="post">
-                        <textarea rows="5" cols="80" id="title"></textarea>
-                        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-                    </form>
-                    <div class="mb-4">
-                        <span class="star-rating">
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 <a href="#"><i class="icofont-ui-rating icofont-2x"></i></a>
-                                 </span>
+                    <form #reviewForm ="ngForm" (ngSubmit)="onSubmit(reviewForm.value)">
+                      <label for="book">Choose a book:</label>
+                        <select ngModel name="id" id="book">
+                            <option *ngFor ="let book of book" value="book.title" ngModel="{{book?.title}}" name="title">{{book?.title}}</option>
+                        </select>
+                        <label for="cars">Stars:</label><br>
+                    <select name="rating" id="rating">
+                      <option value="1" ngModel="{{book?.rating}}" name="rating">*</option>
+                      <option value="2" ngModel="{{book?.rating}}" name="rating">* *</option>
+                      <option value="3" ngModel="{{book?.rating}}" name="rating">* * *</option>
+                      <option value="4" ngModel="{{book?.rating}}" name="rating">* * * *</option>
+                      <option value="5" ngModel="{{book?.rating}}" name="rating">* * * * *</option>
+                    </select>
+                    <div class="example-full-width">
+                        <textarea name="review" rows="5" cols="80" id="review"  ngModel="{{book?.review}}" name="review"></textarea>
                     </div>
+                        <button class="btn-block" type ="submit">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
